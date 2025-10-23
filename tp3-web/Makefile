@@ -1,6 +1,6 @@
 run:
 	@echo "Ejecutando servidor Go, consultar logs en /logs/server.log"
-	@mkdir logs
+	@mkdir -p  logs
 	@go run main.go > logs/server.log 2>&1
 	@echo "Se cerro el servidor Go"
 
