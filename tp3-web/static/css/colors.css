@@ -1,0 +1,30 @@
+/* COLORES */
+
+:root {
+
+    /* Colores base */
+    --color-blanco: #FFFFFF;
+    --color-negro: #121212;
+
+    /* Textos */
+    --color-texto-principal: #333333;
+    --color-texto-secundario: #444444;
+    --color-texto-inverso: #FFFFFF;
+    --color-texto-slidebar: whitesmoke;
+
+    /* Fondos */
+    --color-fondo-dashboard: #FFFFFF;
+    --color-fondo-tarjeta: #F8F9FA;
+
+    /* ➖ Bordes */
+    --color-borde: #E0E0E0;
+
+    /* 🌟 Colores botones */
+    --color-acento-verde: #4CAF50;
+
+    /* Color hovers */
+    --color-hover-verde: #45A049;
+
+    /* Color boton principal */
+    --color-principal: var(--color-acento-verde);
+}
