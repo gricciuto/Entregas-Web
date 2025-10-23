@@ -28,7 +28,7 @@ type Server struct {
 
 func main() {
 	// Cargar variables de entorno
-	_ = godotenv.Load("credentials.env")
+	_ = godotenv.Load(".env")
 	user := os.Getenv("POSTGRES_ADMIN")
 	pass := os.Getenv("POSTGRES_ADMIN_PASSWORD")
 	dbname := os.Getenv("POSTGRES_DB_NAME")
