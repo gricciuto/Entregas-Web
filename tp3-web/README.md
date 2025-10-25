@@ -11,6 +11,8 @@
 
 ------------------
 
+## Logica del proyecto
+El usuario se registra en la pagina y cada vez que sale a correr registra un nuevo entrenamiento que se va a almacenar en la base de datos. Para el calculo de las calorias quemadas se usa un peso fijo de 70kg
 
 ## Estructuras del proyecto
 - Tabla Usuarios: Lleva registro de los usuarios de la plataforma
