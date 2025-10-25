@@ -26,6 +26,8 @@ type Server struct {
 	queries *sqlc.Queries
 }
 
+const peso int = 70
+
 func main() {
 	// Cargar variables de entorno
 	_ = godotenv.Load(".env")
@@ -190,12 +192,12 @@ func (s *Server) crearEntrenamiento(w http.ResponseWriter, r *http.Request) {
 		Tipo:      entrenamientoNuevo.Tipo,
 		Tiempo:    int32(entrenamientoNuevo.Tiempo),
 		RitmoPromedio: sql.NullString{
-			String: fmt.Sprintf("%.2f", entrenamientoNuevo.Ritmo_promedio),
+			String: fmt.Sprintf("%.2f", entrenamientoNuevo.Distancia/float64(entrenamientoNuevo.Tiempo)),
 			Valid:  entrenamientoNuevo.Ritmo_promedio != 0,
 		},
 		Distancia: fmt.Sprintf("%.2f", entrenamientoNuevo.Distancia),
 		Calorias: sql.NullInt32{
-			Int32: int32(entrenamientoNuevo.Calorias),
+			Int32: int32(float64(entrenamientoNuevo.Tiempo) * float64(peso) * entrenamientoNuevo.Ritmo_promedio),
 			Valid: entrenamientoNuevo.Calorias != 0,
 		},
 		Notas: sql.NullString{

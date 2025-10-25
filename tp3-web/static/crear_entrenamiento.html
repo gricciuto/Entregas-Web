@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <title>GoRun-Entrenamientos</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="/static/css/colors.css">
+</head>
+<body>
+<div class="contenedor-entrenamiento">
+
+    <!-- Barra lateral -->
+    <div class="barra-lateral">
+        <h1>GoRun</h1>
+        <nav>
+            <menu>
+                <li><a href="#" class="seleccionado">Dashboard</a></li>
+                <li><a href="#">Actividad</a></li>
+                <li><a href="#">Desafios</a></li>
+                <li><a href="#">Cerrar Sesión</a></li>
+            </menu>
+        </nav>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="contenido">
+        <h1>Entrenamientos</h1>
+        <form class="form-agregar-entrenamiento" id="crear-entrenamiento">
+            <h2>Crear entrenamiento</h2>
+            <input type="number" placeholder="ID">
+            <input type="date" placeholder="Fecha" id="fecha-entrenamiento" required>
+            <input type="text" placeholder="Tipo" id="tipo-entrenamiento" required>
+            <input type="number" placeholder="Distancia (km)" id="distancia-entrenamiento" required>
+            <input type="number" placeholder="Tiempo (min)" id="tiempo-entrenamiento" required>
+            <textarea placeholder="Notas" id="notas-entrenamiento"></textarea>
+            <button id="btn_crear_entrenamiento">Crear Entrenamiento</button>
+        </form>
+        <div class="container-ver-entrenamientos" id="ver-entrenamientos">
+            <h2>Ver entrenamientos</h2>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/static/js/app.js"></script>
+</html>

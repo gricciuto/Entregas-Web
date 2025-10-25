@@ -28,8 +28,7 @@ Content-Type: application/json
     "Fecha"             : "2025-10-20T14:30:00Z",
     "Tipo"              : "Carrera",
     "Distancia"         : 5.6,
-    "Tiempo"            : 3,
-    "Ritmo_Promedio"    : 10
+    "Tiempo"            : 3
 
 }
 HTTP 200
