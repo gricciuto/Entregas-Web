@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap');
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: var(--color-negro);
+    font-family: Contenido, "sans-serif";
+    text-decoration: none;
+    list-style: none;
+    background: var(--color-blanco);
+    margin: 0;
+    padding: 0;
+}
+.container-inicio-login{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-negro);
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Serif", serif;
+}
+.container-inicio-login h1{
+    font-size: 5rem;
+    margin-bottom: 3rem;
+    color: var(--color-negro);
+    font-family: "Merriweather", serif;
+}
+.container-form-login{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+}
+.container-input-label{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 1rem;
+    padding: 0;
+    font-size: 1rem;
+    font-family: "Noto Serif", serif;
+}
+.container-input-label input{
+    height: 1.5rem;
+    width: 100%;
+    border-style: none;
+    font-family: "Noto Serif", serif;
+    font-size: 1rem;
+    padding: 0.4rem 0 0.4rem 0.4rem;
+    margin: 0;
+    border-radius: 0rem;
+    border-bottom: 1px solid var(--color-negro);
+}
+.container-olvido{
+    margin-left: 0.2rem;
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+}
+.container-recordarme{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 1rem;
+}
+.container-olvido a{
+    font-size: 1rem;
+    color: var(--color-negro);
+    text-decoration: none;
+    font-family: Cantarell, sans-serif;
+}
+.container-botones-login{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+    margin-left: 0.4rem;
+}
+.container-botones-login button{
+    flex: 1;
+    color: var(--color-blanco);
+    height: 2rem;
+    background: var(--color-principal);
+    border-style: none;
+    border-radius: 0.3rem;
+    font-family: Cantarell, sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.container-botones-login button:hover{
+    background: var(--color-hover-verde);
+    transition: 0.3s;
+    cursor: pointer;
+}
+.container-registrarse{
+    width: 40%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 0.5rem;
+}
+.container-registrarse a{
+    color: var(--color-negro);
+}
+.container-img-login{
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+.container-img-login img{
+    width: 100%;
+    height: 100%;
+}

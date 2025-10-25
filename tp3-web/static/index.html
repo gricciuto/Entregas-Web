@@ -1,46 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
     <meta charset="UTF-8">
-    <title>GoRun-Entrenamientos</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>GoRun-Login</title>
     <link rel="stylesheet" href="/static/css/colors.css">
+    <link rel="stylesheet" href="/static/css/login.css">
 </head>
 <body>
-<div class="contenedor-entrenamiento">
-
-    <!-- Barra lateral -->
-    <div class="barra-lateral">
-        <h1>GoRun</h1>
-        <nav>
-            <menu>
-                <li><a href="#" class="seleccionado">Dashboard</a></li>
-                <li><a href="#">Actividad</a></li>
-                <li><a href="#">Desafios</a></li>
-                <li><a href="#">Cerrar Sesión</a></li>
-            </menu>
-        </nav>
-    </div>
-
-    <!-- Contenido principal -->
-    <div class="contenido">
-        <h1>Entrenamientos</h1>
-        <form action="POST" class="form-agregar-entrenamiento" id="crear-entrenamiento">
-            <h2>Crear entrenamiento</h2>
-            <input type="date" placeholder="Fecha" id="fecha-entrenamiento" required>
-            <input type="text" placeholder="Tipo" id="tipo-entrenamiento" required>
-            <input type="number" placeholder="Distancia (km)" id="distancia-entrenamiento" required>
-            <input type="number" placeholder="Tiempo (min)" id="tiempo-entrenamiento" required>
-            <input type="number" placeholder="Ritmo Promedio (min/km)" id="ritmo-entrenamiento">
-            <textarea placeholder="Notas" id="notas-entrenamiento"></textarea>
-            <button>Crear Entrenamiento</button>
+<div class="container-login">
+    <div class="container-inicio-login">
+        <h1>Bienvenido</h1>
+        <form class="container-form-login">
+            <div class="container-input-label">
+                <label> Usuario</label>
+                <input id="usuario" type="text" name="usuario" placeholder="Ingrese su usuario">
+            </div>
+            <div class="container-input-label">
+                <label> Email</label>
+                <input id="email" type="text" name="email" placeholder="Ingrese su email">
+            </div>
+            <div class="container-input-label">
+                <label> Contraseña</label>
+                <input id="contrasena" type="text" name="contraseña" placeholder="Ingrese su contraseña">
+            </div>
+            <div class="container-olvido">
+                <div class="container-recordarme">
+                    <input type="checkbox" name="recordarme">
+                    <p>recordarme</p>
+                </div>
+            </div>
+            <div class="container-botones-login">
+                <button id="btn_registrarse">Registrarse</button>
+            </div>
         </form>
-        <div class="container-ver-entrenamientos" id="ver-entrenamientos">
-            <h2>Ver entrenamientos</h2>
-        </div>
+        <div id="ver-usuarios"></div>
+    </div>
+    <div class="container-img-login">
+        <img src="/static/img/login.jpeg" alt="imagen inicio">
     </div>
 </div>
 </body>
-<script src="app.js"></script>
+<script src="/static/js/app.js"></script>
 </html>
