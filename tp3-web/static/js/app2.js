@@ -1,5 +1,5 @@
 const API_Usuarios = "http://localhost:8080/usuarios"
-console.log("Cargalo porque te mato")
+console.log("el que lee la traga")
 function cargarUsuarios(){
     fetch(API_Usuarios)
         .then(response => response.json())
@@ -25,14 +25,21 @@ function cargarUsuarios(){
         .catch(error => console.error('Error al cargar los usuarios:', error));
 }
 // Enviar nuevo usuario (POST)
-const boton = document.getElementById('btn_registrarse')
-boton.addEventListener('click', function(event) {
+const formu = document.getElementById('formulario')
+formu.addEventListener('submit', function(event) {
     event.preventDefault();
+    const nombreDoc = document.getElementById("usuario").value
+    const emailDoc = document.getElementById("email").value
+    const contrasenaDoc = document.getElementById("contrasena").value
+    if (nombreDoc.trim() == '' || emailDoc.trim() == '' || contrasenaDoc.trim() == ''){
+        alert('Te falto algun campito capito')
+        return
+    }
 
     const nuevoUsuario = {
-        nombre: document.getElementById("usuario").value,
-        email: document.getElementById("email").value,
-        contraseña: document.getElementById("contrasena").value
+        nombre: nombreDoc,
+        email: emailDoc,
+        contraseña: contrasenaDoc
     };
     fetch(API_Usuarios, {
         method: 'POST',
@@ -43,9 +50,12 @@ boton.addEventListener('click', function(event) {
             if (response.ok) {
                 console.log('Usuario creado');
                 cargarUsuarios();
-                event.target.reset();
+                formu.reset()
+
             } else {
                 console.error('Error al crear Usuario');
+                alert('No se pudo crear el usuario')
+                formu.reset()
             }
         })
         .catch(error => console.error('Error en POST:', error));

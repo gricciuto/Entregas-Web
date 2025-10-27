@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <title>GoRun-Login</title>
     <link rel="stylesheet" href="/static/css/colors.css">
-    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" href="/static/css/login2.css">
 </head>
 <body>
 <div class="container-login">
     <div class="container-inicio-login">
         <h1>Bienvenido</h1>
-        <form class="container-form-login">
+        <form class="container-form-login" id="formulario">
             <div class="container-input-label">
                 <label> Usuario</label>
-                <input id="usuario" type="text" name="usuario" placeholder="Ingrese su usuario">
+                <input id="usuario" type="text" name="usuario" placeholder="Ingrese su usuario" required>
             </div>
             <div class="container-input-label">
                 <label> Email</label>
-                <input id="email" type="text" name="email" placeholder="Ingrese su email">
+                <input id="email" type="email" name="email" placeholder="Ingrese su email" required>
             </div>
-            <div class="container-input-label">
+            <div class="container-input-label" >
                 <label> Contraseña</label>
-                <input id="contrasena" type="text" name="contraseña" placeholder="Ingrese su contraseña">
+                <input id="contrasena" type="password" name="contraseña" placeholder="Ingrese su contraseña" required >
             </div>
             <div class="container-olvido">
                 <div class="container-recordarme">
@@ -30,15 +30,16 @@
                 </div>
             </div>
             <div class="container-botones-login">
-                <button id="btn_registrarse">Registrarse</button>
+                <button type="submit" id="btn_registrarse">Registrarse</button>
             </div>
         </form>
-        <div id="ver-usuarios"></div>
+
     </div>
     <div class="container-img-login">
-        <img src="/static/img/login.jpeg" alt="imagen inicio">
+        <div id="ver-usuarios"></div>
+        <!--<img src="/static/img/login.jpeg" alt="imagen inicio">-->
     </div>
 </div>
 </body>
-<script src="/static/js/app.js"></script>
+<script src="/static/js/app2.js"></script>
 </html>

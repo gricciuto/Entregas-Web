@@ -7,9 +7,9 @@ POST http://localhost:8080/usuarios
 Content-Type: application/json
 
 {
-    "Nombre": "Fabricio",
-    "Email": "FabricioGamePlays@hotmail.com",
-    "Contraseña": "Elsapopepe"
+    "Nombre": "Roman",
+    "Email": "RomanElOriginalContrataciones@hotmail.com",
+    "Contraseña": "PepeElSapo"
     }
 HTTP 200
 [Captures]
