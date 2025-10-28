@@ -6,6 +6,7 @@ body{
 }
 .container-login{
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -151,16 +152,14 @@ body{
 }
 #ver-usuarios{
     margin: auto;
-    padding-top: 10rem;
-
+    padding: 2rem 1rem;
     max-height: 90vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     width: 70%;
     border-radius: 0.7rem;
     display: flex;
     gap: 1rem;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     background-color: rgba(255,255,255,20%);
 }
@@ -171,4 +170,16 @@ body{
     border-radius: 0.4rem;
     display: flex;
     flex-direction:column;
+}
+
+@media screen and (max-width: 800px) {
+    .container-login {
+        flex-direction: column;
+    }
+    .container-inicio-login{
+        width: 100%;
+    }
+    .container-img-login{
+        width: 100%;
+    }
 }

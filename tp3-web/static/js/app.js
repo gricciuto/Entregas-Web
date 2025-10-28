@@ -7,11 +7,11 @@ function cargarUsuarios(){
             const contenedor = document.getElementById('ver-usuarios');
 
             if (data == null){
-                contenedor.innerHTML = '<h2>No hay usuarios registrados</h2>';
+                contenedor.innerHTML = '<h2 style="color: white">No hay usuarios registrados</h2>';
 
             }
             else {
-                contenedor.innerHTML = '<h2>Ver Usuarios</h2>';
+                contenedor.innerHTML = '<h2 style="padding: 1rem;background-color: rgba(255,255,255,40%); border-radius: 0.4rem">Ver Usuarios</h2>';
                 data.forEach(usuario => {
                     const div = document.createElement('div');
                     div.className = 'usuario-item';
