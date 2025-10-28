@@ -1,14 +1,18 @@
-# Entrega tp3.
+# Entrega TP3 y TP4.
 
 # Inicio del Servidor
     sudo make start
-## Correr pruebas HURL
-*Tiene que estar corriendo el servidor*
 
+## Pruebas HURL
     sudo make hurl-test
+## Ingreso al portal
+    http://localhost:8080
+Puede crear usuarios con su email y contrasena y al presionar registrarse estos se almacenan en la base de datos siendo antes chequeados que sean correctos.
 
+Una vez creados, se agregan a la lista que se muestra a la derecha, cada uno con un boton que lo elimina.
 
-
+**ACLARACION:**
+ La lista que muestra los usuarios en la proxima entrega sera eliminada, solo esta para mostrar los cambios de la base de datos.
 ------------------
 
 ## Logica del proyecto
