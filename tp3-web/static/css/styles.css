@@ -10,8 +10,9 @@ body {
     margin: 0;
     padding: 0;
 }
-.contenedor-entrenamiento{
+.container-login{
     display: flex;
+    flex-direction: row;
     justify-content: start;
     align-items: start;
     width: 100%;
@@ -19,7 +20,7 @@ body {
     margin: 0;
     padding: 0;
 }
-.contenido{
+.container-inicio-login{
     width: 85%;
     height: 100vh;
     background: var(--color-fondo-dashboard);
