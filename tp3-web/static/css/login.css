@@ -106,6 +106,22 @@ body{
     font-size: 1rem;
     cursor: pointer;
 }
+.btn-borrar{
+    flex: 1;
+    color: var(--color-blanco);
+    height: 2rem;
+    background: var(--color-rojo);
+    border-style: none;
+    border-radius: 0.3rem;
+    font-family: Cantarell, sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.btn-borrar button:hover{
+    background: var(--color-rojo-hover);
+    transition: 0.3s;
+    cursor: pointer;
+}
 .container-botones-login button:hover{
     background: var(--color-hover-verde);
     transition: 0.3s;
