@@ -1,5 +1,4 @@
 const API_Usuarios = "http://localhost:8080/usuarios"
-console.log("el que lee la traga")
 function cargarUsuarios(){
     fetch(API_Usuarios)
         .then(response => response.json())
@@ -15,6 +14,7 @@ function cargarUsuarios(){
                         <h3>${usuario.nombre}</h3>
                         <p><strong>Contraseña:</strong> ${usuario.contraseña}</p>
                         <p><strong>Email:</strong> ${usuario.email}</p>
+                        <button class="btn-borrar" data-id="${usuario.id}">Borrar</button>
 
                     </div>`
                 //<button class="btn-eliminar" data-id="${usuario.id}">Eliminar</button>
