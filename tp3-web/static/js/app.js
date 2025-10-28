@@ -1,26 +1,33 @@
 const API_Usuarios = "http://localhost:8080/usuarios"
+const API_Usuario = "http://localhost:8080/usuario/"
 function cargarUsuarios(){
     fetch(API_Usuarios)
         .then(response => response.json())
         .then(data => {
             const contenedor = document.getElementById('ver-usuarios');
-            contenedor.innerHTML = '<h2>Ver Usuarios</h2>'; // reinicia contenido
 
-            data.forEach(usuario => {
-                const div = document.createElement('div');
-                div.className = 'usuario-item';
-                div.innerHTML = `
+            if (data == null){
+                contenedor.innerHTML = '<h2>No hay usuarios registrados</h2>';
+
+            }
+            else {
+                contenedor.innerHTML = '<h2>Ver Usuarios</h2>';
+                data.forEach(usuario => {
+                    const div = document.createElement('div');
+                    div.className = 'usuario-item';
+                    div.innerHTML = `
                     <div class="datos-usuario">
                         <h3>${usuario.nombre}</h3>
                         <p><strong>Contraseña:</strong> ${usuario.contraseña}</p>
                         <p><strong>Email:</strong> ${usuario.email}</p>
-                        <button class="btn-borrar" data-id="${usuario.id}">Borrar</button>
+                        <button class="btn-borrar" data-id="${usuario.id_usuario}">Borrar</button>
 
                     </div>`
-                //<button class="btn-eliminar" data-id="${usuario.id}">Eliminar</button>
-                ;
-                contenedor.appendChild(div);
-            });
+                    //<button class="btn-eliminar" data-id="${usuario.id}">Eliminar</button>
+                    ;
+                    contenedor.appendChild(div);
+                });
+            }
         })
         .catch(error => console.error('Error al cargar los usuarios:', error));
 }
@@ -62,24 +69,26 @@ formu.addEventListener('submit', function(event) {
 });
 
 // Delegación de eventos para eliminar (DELETE)
-/*document.getElementById('ver-entrenamientos').addEventListener('click', function(event) {
-    if (event.target.classList.contains('btn-eliminar')) {
-        const id = event.target.getAttribute('data-id');
-
-        fetch(`${API_URL}/${id}`, {
+const verusuarios = document.getElementById('ver-usuarios')
+verusuarios.addEventListener('click', function(event){
+    if (event.target.classList.contains('btn-borrar')){
+        const id = event.target.getAttribute('data-id')
+        fetch(`${API_Usuario}${id}`, {
             method: 'DELETE'
         })
             .then(response => {
                 if (response.ok) {
-                    console.log(`Entrenamiento ${id} eliminado`);
-                    cargarEntrenamientos();
+                    console.log(`Usuario ${id} eliminado`);
+                    cargarUsuarios();
                 } else {
-                    console.error('Error al eliminar entrenamiento');
+                    console.error('Error al eliminar el usuario');
                 }
             })
             .catch(error => console.error('Error en DELETE:', error));
+
     }
-});
-*/
+})
+
+
 // Ejecutar al cargar la página
 window.addEventListener('DOMContentLoaded', cargarUsuarios);

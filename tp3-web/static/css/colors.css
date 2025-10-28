@@ -24,7 +24,9 @@
 
     /* Color hovers */
     --color-hover-verde: #45A049;
-
+    /* Color boton borrar */
+    --color-rojo: #BB2200;
+    --color-rojo-hover: #FF2200;
     /* Color boton principal */
     --color-principal: var(--color-acento-verde);
 }
