@@ -16,7 +16,7 @@ start-docker-db:
 	@echo "Levantando base de datos en Docker..."
 	docker compose up -d
 	@echo "Esperando que la base de datos esté lista..."
-	until sudo docker exec tp3_db pg_isready -U admin -d gorun; do \
+	until docker exec tp3_db pg_isready -U admin -d gorun; do \
     		echo "Esperando a Postgres..."; \
     		sleep 2; \
     	done

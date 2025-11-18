@@ -68,3 +68,40 @@ En el archivo /logs/server.log se encuentran los logs de la ejecucion del servid
 ### Logic
 Se verifican en logic la correcta escritura de los usuarios y los entrenamientos
 
+## **Correcciones**
+```
+Nicolás Angladette
+Ramiro Ortiz
+Gino Ricciuto
+
+La entrega está bien documentada y en general bien estructurada. 
+Sin embargo, hay algunos puntos importantes a mejorar.
+
+Primero, no deberían ejecutar los comandos con sudo. 
+Es una mala práctica y en este caso no es necesario, 
+ya que todo corre correctamente sin privilegios de superusuario. 
+Tuve que modificar algunas líneas para evitar que me pida la contraseña de sudo.
+
+Además, no deberían tener el mapeo de db_data en el contenedor, 
+ya que eso contiene datos binarios de la base. 
+La creación de la base debe ocurrir al iniciar el contenedor, 
+no mediante archivos persistentes mapeados.
+
+Los tests con HURL están bien implementados y funcionan correctamente. 
+En cuanto a la estructura, faltó separar la funcionalidad de los 
+usuarios en un handler propio, ya que actualmente toda la lógica se encuentra 
+en el main con una validación mínima de integridad.
+
+En el Makefile, pueden simplificar los comandos invocando directamente los 
+targets en lugar de llamarlos explícitamente con $(MAKE). 
+Esto hará el flujo más claro y estándar.
+
+Respecto a la aplicación, solo pude crear usuarios, pero no cargar entrenamientos. 
+El README tampoco explica cómo hacerlo, ni cómo acceder a esa sección una vez 
+registrado. Para la próxima entrega, asegúrense de agregar la lógica de uso 
+completa y aprovechar las herramientas vistas en los prácticos 5 y 6, 
+incorporando las mejoras sugeridas.
+
+Vienen bien, sigan ajustando estos detalles para lograr una entrega más completa.
+
+Saludos,`
