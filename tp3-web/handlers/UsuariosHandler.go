@@ -25,7 +25,7 @@ func (s *Server) UsuariosHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func postUsuarios(w http.ResponseWriter, r *http.Request) {
+func (s *Server) postUsuarios(w http.ResponseWriter, r *http.Request) {
 	var u logic.Usuario
 
 	if err := json.NewDecoder(r.Body).Decode(&u); err != nil {
@@ -49,7 +49,7 @@ func postUsuarios(w http.ResponseWriter, r *http.Request) {
 		Contraseña: u.Contraseña,
 	}
 
-	usuarioCreado, err := s.queries.CreateUsuario(ctx, arg)
+	usuarioCreado, err := s.Queries.CreateUsuario(ctx, arg)
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Error al crear usuario: %v", err), http.StatusInternalServerError)
 		log.Print("Error de la base de datos al crear un nuevo usuario")
@@ -59,9 +59,9 @@ func postUsuarios(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(usuarioCreado)
 	log.Printf("Se creo un nuevo usuario con ID %v", usuarioCreado.IDUsuario)
 }
-func getUsuarios(w http.ResponseWriter, r *http.Request) {
+func (s *Server) getUsuarios(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	usuario, err := queries.GetUsuarios(r.Context())
+	usuario, err := s.Queries.GetUsuarios(r.Context())
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Error al leer usuarios: %v", err), http.StatusInternalServerError)
 		log.Print("Error de la base de datos al mostrar todos los usuarios")

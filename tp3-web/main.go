@@ -17,16 +17,9 @@ import (
 	_ "github.com/lib/pq"
 
 	sqlc "tp3-web/db/sqlc"
-	"tp3-web/logic"
 )
 
 // Estructura global para compartir la conexión y queries
-type Server struct {
-	db      *sql.DB
-	queries *sqlc.Queries
-}
-
-const peso int = 70
 
 func main() {
 	// Cargar variables de entorno
@@ -49,9 +42,9 @@ func main() {
 		log.Fatalf("No se pudo conectar a Postgres: %v", err)
 	}
 
-	server := &Server{
-		db:      db,
-		queries: sqlc.New(db),
+	server := &handlers.Server{
+		DB:      db,
+		Queries: sqlc.New(db),
 	}
 	fs := http.FileServer(http.Dir("./static"))
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
@@ -60,10 +53,10 @@ func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "./static/index.html")
 	})
-	http.HandleFunc("/usuarios", server.handlers.UsuariosHandler)
-	http.HandleFunc("/usuario/", server.usuarioIdHandler)
-	http.HandleFunc("/entrenamientos", server.entrenamientosHandler)
-	http.HandleFunc("/entrenamiento/", server.entrenamientosIdHandler)
+	http.HandleFunc("/usuarios", server.UsuariosHandler)
+	http.HandleFunc("/usuario/", server.UsuarioIdHandler)
+	http.HandleFunc("/entrenamientos", server.EntrenamientosHandler)
+	http.HandleFunc("/entrenamiento/", server.EntrenamientosIdHandler)
 
 	log.Println("Servidor escuchando en http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))

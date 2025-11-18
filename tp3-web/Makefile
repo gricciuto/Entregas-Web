@@ -29,14 +29,14 @@ down-docker-db:
 start:
 	@echo "Iniciando proyecto completo..."
 	sqlc generate
-	$(MAKE) start-docker-db
-	$(MAKE) test
-	$(MAKE) run
-	$(MAKE) stop
+	make start-docker-db
+	make test
+	make run
+	make stop
 
 stop:
 	@echo "Deteniendo contenedores..."
-	$(MAKE) down-docker-db
+	make down-docker-db
 
 hurl-test:
 	@echo "Corriendo pruebas HURL"

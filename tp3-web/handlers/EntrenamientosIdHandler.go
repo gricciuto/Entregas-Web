@@ -36,7 +36,7 @@ func (s *Server) EntrenamientosIdHandler(w http.ResponseWriter, r *http.Request)
 }
 func (s *Server) eliminarEntrenamiento(w http.ResponseWriter, r *http.Request, id int) {
 	w.Header().Set("Content-Type", "application/json")
-	err := s.queries.DeleteEntrenamiento(r.Context(), int32(id))
+	err := s.Queries.DeleteEntrenamiento(r.Context(), int32(id))
 	if err != nil {
 		http.Error(w, fmt.Sprintf("No se pudo elimiar el entrenamiento"), http.StatusInternalServerError)
 		log.Print("No se pudo elimiar el entrenamiento")
@@ -74,7 +74,7 @@ func (s *Server) actualizarEntrenamiento(w http.ResponseWriter, r *http.Request,
 			Valid:  entrenamientoActualizado.Notas != "",
 		},
 	}
-	entrenamiento, err := s.queries.UpdateEntrenamiento(r.Context(), entrenamientoActualizadoSQL)
+	entrenamiento, err := s.Queries.UpdateEntrenamiento(r.Context(), entrenamientoActualizadoSQL)
 	if err != nil {
 		http.Error(w, fmt.Sprintf("No se pudo actualizar el entrenamiento"), http.StatusInternalServerError)
 		log.Print("Error al actualizar un entrenamiento en la base de datos")
@@ -85,7 +85,7 @@ func (s *Server) actualizarEntrenamiento(w http.ResponseWriter, r *http.Request,
 }
 func (s *Server) getEntrenamientosId(w http.ResponseWriter, r *http.Request, id int) {
 	w.Header().Set("Content-Type", "application/json")
-	entrenamiento, err := s.queries.GetEntrenamientoByID(r.Context(), int32(id))
+	entrenamiento, err := s.Queries.GetEntrenamientoByID(r.Context(), int32(id))
 	if err != nil {
 		http.Error(w, fmt.Sprintf("No se encontro un entrenamiento con ese ID de usuario"), http.StatusBadRequest)
 		log.Print("Error, no se encontro un entrenamiento con el ID %i", id)

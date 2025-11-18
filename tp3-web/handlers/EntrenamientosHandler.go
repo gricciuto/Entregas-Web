@@ -10,7 +10,9 @@ import (
 	"tp3-web/logic"
 )
 
-func (s *Server) entrenamientosHandler(w http.ResponseWriter, r *http.Request) {
+const peso int = 70
+
+func (s *Server) EntrenamientosHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 
 	switch r.Method {
@@ -24,7 +26,7 @@ func (s *Server) entrenamientosHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 func (s *Server) getEntrenamientos(w http.ResponseWriter, r *http.Request) {
-	entrenamiento, err := s.queries.GetEntrenamientos(r.Context())
+	entrenamiento, err := s.Queries.GetEntrenamientos(r.Context())
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Error al obtener los entrenamientos"), http.StatusInternalServerError)
 		log.Print("Error al mostrar los entrenamientos")
@@ -62,7 +64,7 @@ func (s *Server) crearEntrenamiento(w http.ResponseWriter, r *http.Request) {
 			Valid:  entrenamientoNuevo.Notas != "",
 		},
 	}
-	entrenamiento, err := s.queries.CreateEntrenamiento(r.Context(), entrenamientoNuevoSQL)
+	entrenamiento, err := s.Queries.CreateEntrenamiento(r.Context(), entrenamientoNuevoSQL)
 	if err != nil {
 		http.Error(w, fmt.Sprintf("No se pudo crear el entrenamiento"), http.StatusInternalServerError)
 		log.Print("Error al crear el entrenamiento en la base de datos")

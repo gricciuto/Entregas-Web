@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func (s *Server) usuarioIdHandler(w http.ResponseWriter, r *http.Request) {
+func (s *Server) UsuarioIdHandler(w http.ResponseWriter, r *http.Request) {
 
 	parts := strings.Split(r.URL.Path, "/")
 	if len(parts) != 3 {
@@ -35,7 +35,7 @@ func (s *Server) usuarioIdHandler(w http.ResponseWriter, r *http.Request) {
 }
 func (s *Server) deleteUsuario(w http.ResponseWriter, r *http.Request, id int) {
 	w.Header().Set("Content-Type", "application/json")
-	err := s.queries.DeleteUsuario(r.Context(), int32(id))
+	err := s.Queries.DeleteUsuario(r.Context(), int32(id))
 	if err != nil {
 		http.Error(w, "Error al borrar usuario", http.StatusBadRequest)
 		log.Print("Error de la base al borrar el usuario ID %i", id)
@@ -44,7 +44,7 @@ func (s *Server) deleteUsuario(w http.ResponseWriter, r *http.Request, id int) {
 }
 func (s *Server) getUsuarioByID(w http.ResponseWriter, r *http.Request, id int) {
 	w.Header().Set("Content-Type", "application/json")
-	usuario, err := s.queries.GetUsuarioByID(r.Context(), int32(id))
+	usuario, err := s.Queries.GetUsuarioByID(r.Context(), int32(id))
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Error al leer usuarios: %v", err), http.StatusInternalServerError)
 		log.Printf("Error de la base de datos al mostrar el usuario ID %v", id)
