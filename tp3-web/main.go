@@ -51,12 +51,29 @@ func main() {
 
 	// Handler para la página principal
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "./static/index.html")
+		http.Redirect(w, r, "/login", http.StatusSeeOther)
 	})
-	http.HandleFunc("/usuarios", server.UsuariosHandler)
-	http.HandleFunc("/usuario/", server.UsuarioIdHandler)
-	http.HandleFunc("/entrenamientos", server.EntrenamientosHandler)
-	http.HandleFunc("/entrenamiento/", server.EntrenamientosIdHandler)
+	http.HandleFunc("/login", func(w http.ResponseWriter, r *http.Request) {
+		switch r.Method {
+		case http.MethodGet:
+			server.LoginGet(w, r)
+		case http.MethodPost:
+			server.LoginPost(w, r)
+		default:
+			http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
+		}
+	})
+
+	http.HandleFunc("/entrenamientos", func(w http.ResponseWriter, r *http.Request) {
+		switch r.Method {
+		case http.MethodGet:
+			server.EntrenamientosPage(w, r)
+		case http.MethodPost:
+			server.CreateEntrenamiento(w, r)
+		default:
+			http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
+		}
+	})
 
 	log.Println("Servidor escuchando en http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))

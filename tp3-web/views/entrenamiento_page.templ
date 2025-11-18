@@ -1,0 +1,26 @@
+package views
+
+import sqlc "tp3-web/db/sqlc"
+
+templ EntrenamientosPage(entrenamientos []sqlc.Entrenamiento) {
+    @Layout("GoRun - Entrenamientos") {
+        <div class="contenedor-entrenamiento">
+
+            <div class="barra-lateral">
+                @Sidebar()
+            </div>
+
+            <div class="contenido">
+                <h1>Entrenamientos</h1>
+
+                @EntrenamientosForm()
+                @EntrenamientosList(entrenamientos)
+            </div>
+
+            <div class="container-img-login">
+                <div id="ver-usuarios"></div>
+            </div>
+
+        </div>
+    }
+}

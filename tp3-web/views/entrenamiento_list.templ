@@ -1,0 +1,20 @@
+package views
+
+import sqlc "tp3-web/db/sqlc"
+
+templ EntrenamientosList(entrenamientos []sqlc.Entrenamiento) {
+<div class="container-ver-entrenamientos">
+    <h2>Ver entrenamientos</h2>
+
+    <ul>
+        for _, e := range entrenamientos {
+            <li>
+                <strong>{ e.Tipo }</strong> - { e.Fecha.Format("2006-01-02") }
+                — { e.Distancia } km en { e.Tiempo } min
+                <br/>
+                { e.Notas }
+            </li>
+        }
+    </ul>
+</div>
+}

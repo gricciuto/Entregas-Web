@@ -30,7 +30,7 @@ start:
 	@echo "Iniciando proyecto completo..."
 	sqlc generate
 	make start-docker-db
-	make test
+	make templ
 	make run
 	make stop
 
@@ -41,3 +41,6 @@ stop:
 hurl-test:
 	@echo "Corriendo pruebas HURL"
 	hurl --test hurl/requests.hurl
+
+templ:
+	templ generate

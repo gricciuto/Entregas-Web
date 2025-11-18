@@ -1,0 +1,23 @@
+package views
+
+templ LoginForm() {
+
+    <form class="container-form-login" method="POST" action="/usuarios">
+        <div class="container-input-label">
+            <label>Usuario</label>
+            <input type="text" name="nombre" placeholder="Ingrese su usuario" required/>
+        </div>
+        <div class="container-input-label">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Ingrese su email" required/>
+        </div>
+        <div class="container-input-label">
+            <label>Contraseña</label>
+            <input type="password" name="contrasena" placeholder="Ingrese su contraseña" required/>
+        </div>
+
+        <div class="container-botones-login">
+            <button type="submit">Registrarse</button>
+        </div>
+    </form>
+}

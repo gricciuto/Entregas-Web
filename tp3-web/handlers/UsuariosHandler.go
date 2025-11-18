@@ -58,6 +58,7 @@ func (s *Server) postUsuarios(w http.ResponseWriter, r *http.Request) {
 
 	json.NewEncoder(w).Encode(usuarioCreado)
 	log.Printf("Se creo un nuevo usuario con ID %v", usuarioCreado.IDUsuario)
+	http.Redirect(w, r, "/entrenamientos", http.StatusSeeOther)
 }
 func (s *Server) getUsuarios(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")

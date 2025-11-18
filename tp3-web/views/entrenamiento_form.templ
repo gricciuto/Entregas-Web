@@ -1,0 +1,15 @@
+package views
+
+templ EntrenamientosForm() {
+<form class="form-agregar-entrenamiento" method="POST" action="/entrenamientos">
+    <h2>Crear entrenamiento</h2>
+
+    <input type="date" placeholder="Fecha" name="fecha" required>
+    <input type="text" placeholder="Tipo" name="tipo" required>
+    <input type="number" placeholder="Distancia (km)" name="distancia" required>
+    <input type="number" placeholder="Tiempo (min)" name="tiempo" required>
+    <textarea type="text" placeholder="Notas" name="notas"></textarea>
+
+    <button type="submit">Crear Entrenamiento</button>
+</form>
+}
