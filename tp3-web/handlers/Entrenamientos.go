@@ -10,6 +10,29 @@ import (
 	"tp3-web/views"
 )
 
+func (s *Server) DeleteEntrenamiento(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
+		return
+	}
+
+	idStr := r.FormValue("id")
+	id, err := strconv.Atoi(idStr)
+	if err != nil {
+		http.Error(w, "ID inválido", http.StatusBadRequest)
+		return
+	}
+
+	// Ejecutás el delete con sqlc
+	err = s.Queries.DeleteEntrenamiento(r.Context(), int32(id))
+	if err != nil {
+		http.Error(w, "Error al borrar", http.StatusInternalServerError)
+		return
+	}
+
+	http.Redirect(w, r, "/entrenamientos", http.StatusSeeOther)
+}
+
 // GET /entrenamientos
 func (s *Server) EntrenamientosPage(w http.ResponseWriter, r *http.Request) {
 	// Por simplicidad uso usuario_id = 1. En producción sacalo de la sesión.

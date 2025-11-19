@@ -6,15 +6,24 @@ templ EntrenamientosList(entrenamientos []sqlc.Entrenamiento) {
 <div class="container-ver-entrenamientos">
     <h2>Ver entrenamientos</h2>
 
-    <ul>
-        for _, e := range entrenamientos {
-            <li>
-                <strong>{ e.Tipo }</strong> - { e.Fecha.Format("2006-01-02") }
-                — { e.Distancia } km en { e.Tiempo } min
-                <br/>
-                { e.Notas.String }
-            </li>
-        }
-    </ul>
+    if len(entrenamientos) == 0 {
+        <p class="sin-entrenamientos">No hay entrenamientos cargados todavía.</p>
+    } else {
+        <ul class="ul-entrenamientos">
+            for _, e := range entrenamientos {
+                <li class="entrenamiento-item">
+                    <h3>{ e.Tipo }</h3>
+                    <p>Día: { e.Fecha.Format("2006-01-02") }</p>
+                    <p>{ e.Distancia } km en { e.Tiempo } min</p>
+                    <p>{ e.Notas.String }</p>
+
+                    <form method="POST" action="/entrenamientos/delete">
+                        <input type="hidden" name="id" value={ int(e.IDEntrenamiento) } />
+                        <button class="btn-eliminar" type="submit">Borrar</button>
+                    </form>
+                </li>
+            }
+        </ul>
+    }
 </div>
 }

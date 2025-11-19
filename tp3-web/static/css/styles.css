@@ -13,13 +13,15 @@ body {
 .contenedor-entrenamiento{
     display: flex;
     width: 100%;
+    height: 100vh;
     flex-direction: row;
     justify-content: start;
-    align-items: center;
+    align-items: start;
     background-color: white;
 }
 .contenido{
     display: flex;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -31,6 +33,7 @@ body {
     gap: 1rem;
     width: 80%;
     margin: 0 auto;
+    height: 60%;
     justify-content: center;
     align-items: center;
 }
@@ -57,14 +60,26 @@ body {
 .container-ver-entrenamientos{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     width: 100%;
+    height: 40%;
     margin: 0;
     padding: 0;
 }
-
+.ul-entrenamientos {
+    width: 80%;
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+    gap: 5px; /* separación entre items (opcional) */
+    margin: 0;
+    padding: 0;
+    overflow-y: scroll;
+}
 .entrenamiento-item {
+    list-style: none;
+    text-decoration: none;
     background: var(--color-fondo-tarjeta);
     border: 1px solid var(--color-borde);
     border-radius: 6px;
@@ -73,7 +88,9 @@ body {
     width: 80%;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-
+.entrenamiento-item p {
+    font-family: "Noto Serif", serif;
+}
 .entrenamiento-item h3 {
     margin: 0 0 0.5rem 0;
     color: var(--color-texto-secundario);
@@ -96,9 +113,11 @@ body {
 /* BARRA LATERAL */
 
 .barra-lateral{
+    display: flex;
+    flex-direction: column;
     width: 15%;
-    min-height: 100vh;
-    height: 100%;
+    height: 100vh;
+
     background: var(--color-negro);
     padding: 0 2rem 0 2rem;
     margin: 0;

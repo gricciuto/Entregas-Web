@@ -2,18 +2,18 @@ package views
 
 templ LoginForm() {
 
-    <form class="container-form-login" method="POST" action="/usuarios">
-        <div class="container-input-label">
+    <form class="container-form-login" method="POST" action="/login">
+        <div class="container-input-label" hidden="hidden">
             <label>Usuario</label>
-            <input type="text" name="nombre" placeholder="Ingrese su usuario" required/>
+            <input type="text" name="nombre" id="nombre" placeholder="Ingrese su usuario" required/>
         </div>
         <div class="container-input-label">
             <label>Email</label>
-            <input type="email" name="email" placeholder="Ingrese su email" required/>
+            <input type="email" name="email" id="email" placeholder="Ingrese su email" required/>
         </div>
         <div class="container-input-label">
             <label>Contraseña</label>
-            <input type="password" name="contrasena" placeholder="Ingrese su contraseña" required/>
+            <input type="password" name="contraseña" id="contraseña" placeholder="Ingrese su contraseña" required/>
         </div>
 
         <div class="container-botones-login">
