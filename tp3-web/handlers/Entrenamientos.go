@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"database/sql" // <--- AGREGADO: Necesario para sql.NullString
 	"net/http"
 	"strconv"
 	"time"
@@ -12,7 +13,6 @@ import (
 // GET /entrenamientos
 func (s *Server) EntrenamientosPage(w http.ResponseWriter, r *http.Request) {
 	// Por simplicidad uso usuario_id = 1. En producción sacalo de la sesión.
-
 	entrenamientos, err := s.Queries.GetEntrenamientos(r.Context())
 	if err != nil {
 		http.Error(w, "Error leyendo entrenamientos", http.StatusInternalServerError)
@@ -49,7 +49,9 @@ func (s *Server) CreateEntrenamiento(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	distancia, err := strconv.ParseFloat(distanciaStr, 64)
+	// Validamos que sea numero, pero para guardarlo usamos el string original
+	// ya que sqlc espera un string para tipos DECIMAL/NUMERIC
+	_, err = strconv.ParseFloat(distanciaStr, 64)
 	if err != nil {
 		http.Error(w, "Distancia inválida", http.StatusBadRequest)
 		return
@@ -64,9 +66,9 @@ func (s *Server) CreateEntrenamiento(w http.ResponseWriter, r *http.Request) {
 	_, err = s.Queries.CreateEntrenamiento(r.Context(), sqlc.CreateEntrenamientoParams{
 		Fecha:     fecha,
 		Tipo:      tipo,
-		Distancia: float64(distancia),
+		Distancia: distanciaStr, // <--- CAMBIO: Usamos el string directo
 		Tiempo:    int32(tiempo),
-		Notas:     sqlc.NullString{String: notas, Valid: notas != ""}, // *si sqlc usa sql.NullString*: adapta
+		Notas:     sql.NullString{String: notas, Valid: notas != ""}, // <--- CAMBIO: sql.NullString
 		UsuarioID: usuarioID,
 	})
 	if err != nil {

@@ -12,7 +12,7 @@ templ EntrenamientosList(entrenamientos []sqlc.Entrenamiento) {
                 <strong>{ e.Tipo }</strong> - { e.Fecha.Format("2006-01-02") }
                 — { e.Distancia } km en { e.Tiempo } min
                 <br/>
-                { e.Notas }
+                { e.Notas.String }
             </li>
         }
     </ul>
