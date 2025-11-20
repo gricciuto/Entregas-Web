@@ -9,7 +9,10 @@ Luego los siguientes comandos
     http://localhost:8080
 Se ingresa con email y contrasena, si no esta registrado se puede registrar.
 
-Al ingresar se redirige a la pagina de entrenamientos, que permite agregar y borrar entrenamientos sin recargar toda la pagina.
+Al ingresar se redirige a la pagina de entrenamientos, que permite agregar y borrar entrenamientos.
+
+Se puede cerrar la sesion pulsando el boton de la barra lateral que dice "Cerrar sesion", El manejo de sesiones y seguridad de la pagina sabemos que no es el correcto, esto sera implementado en la proxima entrega
+
 
 ------------------
 
@@ -48,5 +51,6 @@ Contiene el servidor que escucha en el puerto **8080**, y las funciones que al r
 En el archivo /logs/server.log se encuentran los logs de la ejecucion del servidor
 ### Views
 Contiene los archivos templ. Cada uno contiene una funcion especifica con un trozo de html
-Por ejemplo en layout se tiene la estructura base del **html** y dos paginas *login page y entrenamiento page* 
+Por ejemplo en layout se tiene la estructura base del **html** y dos paginas *login page y entrenamiento page*.
+
 Siguen estando en la carpeta static los archivos css que utilizan los templ y la imagen para el login.

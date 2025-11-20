@@ -1,8 +1,9 @@
 package views
 
 import sqlc "tp3-web/db/sqlc"
+import "fmt"
 
-templ EntrenamientosList(entrenamientos []sqlc.Entrenamiento) {
+templ EntrenamientosList(entrenamientos []sqlc.Entrenamiento,id int) {
 <div class="container-ver-entrenamientos">
     <h2>Ver entrenamientos</h2>
 
@@ -16,8 +17,8 @@ templ EntrenamientosList(entrenamientos []sqlc.Entrenamiento) {
                     <p>Día: { e.Fecha.Format("2006-01-02") }</p>
                     <p>{ e.Distancia } km en { e.Tiempo } min</p>
                     <p>{ e.Notas.String }</p>
-
-                    <form method="POST" action="/entrenamientos/delete">
+                    {{id_usuario := fmt.Sprintf("/entrenamientos/delete/%d",id)}}
+                    <form method="POST" action={id_usuario}>
                         <input type="hidden" name="id" value={ int(e.IDEntrenamiento) } />
                         <button class="btn-eliminar" type="submit">Borrar</button>
                     </form>

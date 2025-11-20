@@ -11,7 +11,7 @@ import (
 	"tp3-web/views"
 )
 
-func (s *Server) DeleteEntrenamiento(w http.ResponseWriter, r *http.Request) {
+func (s *Server) DeleteEntrenamiento(w http.ResponseWriter, r *http.Request, id_usuario int) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
 		return
@@ -30,8 +30,8 @@ func (s *Server) DeleteEntrenamiento(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error al borrar", http.StatusInternalServerError)
 		return
 	}
-
-	http.Redirect(w, r, "/entrenamientos", http.StatusSeeOther)
+	url := fmt.Sprintf("/entrenamientos/%d", id_usuario)
+	http.Redirect(w, r, url, http.StatusSeeOther)
 }
 
 // GET /entrenamientos

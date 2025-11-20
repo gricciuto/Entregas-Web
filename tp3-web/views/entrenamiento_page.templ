@@ -10,7 +10,7 @@ templ EntrenamientosPage(entrenamientos []sqlc.Entrenamiento,id int) {
                 <h1>Entrenamientos</h1>
 
                 @EntrenamientosForm(id)
-                @EntrenamientosList(entrenamientos)
+                @EntrenamientosList(entrenamientos,id)
             </div>
         </div>
     }
