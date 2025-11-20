@@ -8,7 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-
+	"strconv"
 	"time"
 	handlers "tp3-web/handlers"
 
@@ -63,6 +63,16 @@ func main() {
 			http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
 		}
 	})
+	http.HandleFunc("/register", func(w http.ResponseWriter, r *http.Request) {
+		switch r.Method {
+		case http.MethodGet:
+			server.RegisterGet(w, r)
+		case http.MethodPost:
+			server.RegisterPost(w, r)
+		default:
+			http.Error(w, "Metodo no permitido", http.StatusMethodNotAllowed)
+		}
+	})
 	http.HandleFunc("/entrenamientos/delete", func(w http.ResponseWriter, r *http.Request) {
 		switch r.Method {
 		case http.MethodPost:
@@ -71,12 +81,17 @@ func main() {
 			http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
 		}
 	})
-	http.HandleFunc("/entrenamientos", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/entrenamientos/{id}", func(w http.ResponseWriter, r *http.Request) {
+		id := r.PathValue("id")
+		num_id, err := strconv.Atoi(id)
+		if err != nil {
+			log.Printf("Error parsing: %v", err)
+		}
 		switch r.Method {
 		case http.MethodGet:
-			server.EntrenamientosPage(w, r)
+			server.EntrenamientosPage(w, r, num_id)
 		case http.MethodPost:
-			server.CreateEntrenamiento(w, r)
+			server.CreateEntrenamiento(w, r, num_id)
 		default:
 			http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
 		}

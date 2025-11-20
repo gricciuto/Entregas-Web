@@ -1,7 +1,8 @@
 package views
-
-templ EntrenamientosForm() {
-<form class="form-agregar-entrenamiento" method="POST" action="/entrenamientos">
+import "fmt"
+templ EntrenamientosForm(id int) {
+{{actionURL := fmt.Sprintf("/entrenamientos/%d",id)}}
+<form class="form-agregar-entrenamiento" method="POST" action={actionURL}>
     <h2>Crear entrenamiento</h2>
 
     <input type="date" placeholder="Fecha" name="fecha" required>

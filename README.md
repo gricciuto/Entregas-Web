@@ -7,10 +7,7 @@ Luego los siguientes comandos
 
 ## Ingreso al portal
     http://localhost:8080
-Por el momento tenemos implementado un login con un usuario.
--   Usuario:    profe
--   Email:      profe@gmail.com
-  - Contraseña: 1234
+Se ingresa con email y contrasena, si no esta registrado se puede registrar.
 
 Al ingresar se redirige a la pagina de entrenamientos, que permite agregar y borrar entrenamientos sin recargar toda la pagina.
 

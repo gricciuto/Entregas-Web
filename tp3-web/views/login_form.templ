@@ -3,10 +3,6 @@ package views
 templ LoginForm() {
 
     <form class="container-form-login" method="POST" action="/login">
-        <div class="container-input-label" hidden="hidden">
-            <label>Usuario</label>
-            <input type="text" name="nombre" id="nombre" placeholder="Ingrese su usuario" required/>
-        </div>
         <div class="container-input-label">
             <label>Email</label>
             <input type="email" name="email" id="email" placeholder="Ingrese su email" required/>
@@ -19,5 +15,8 @@ templ LoginForm() {
         <div class="container-botones-login">
             <button type="submit">Iniciar sesión</button>
         </div>
+        <p class="link-registro">
+            ¿No tienes cuenta? <a href="/register">Registrarse aquí</a>
+        </p>
     </form>
 }

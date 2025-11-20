@@ -2,14 +2,14 @@ package views
 
 import sqlc "tp3-web/db/sqlc"
 
-templ EntrenamientosPage(entrenamientos []sqlc.Entrenamiento) {
+templ EntrenamientosPage(entrenamientos []sqlc.Entrenamiento,id int) {
     @Layout("GoRun - Entrenamientos") {
         <div class="contenedor-entrenamiento">
                 @Sidebar()
             <div class="contenido">
                 <h1>Entrenamientos</h1>
 
-                @EntrenamientosForm()
+                @EntrenamientosForm(id)
                 @EntrenamientosList(entrenamientos)
             </div>
         </div>

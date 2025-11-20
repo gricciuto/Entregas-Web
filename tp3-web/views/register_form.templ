@@ -1,0 +1,23 @@
+package views
+
+templ RegisterForm() {
+    <form class="container-form-login" method="POST" action="/register">
+        <h3>Crear Nueva Cuenta</h3>
+        <div class="container-input-label">
+            <label>Usuario</label>
+            <input type="text" name="nombre" id="nombre" placeholder="Ingrese su usuario" required/>
+        </div>
+        <div class="container-input-label">
+            <label>Email</label>
+            <input type="email" name="email" id="email" placeholder="Ingrese su email" required/>
+        </div>
+        <div class="container-input-label">
+            <label>Contraseña</label>
+            <input type="password" name="contraseña" id="contraseña" placeholder="Cree su contraseña" required/>
+        </div>
+
+        <div class="container-botones-login">
+            <button type="submit">Registrarse</button>
+        </div>
+    </form>
+}

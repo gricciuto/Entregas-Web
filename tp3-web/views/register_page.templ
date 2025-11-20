@@ -1,0 +1,24 @@
+package views
+
+// 1. Agregamos "errorMessage string" aquí
+templ RegisterPage(errorMessage string) {
+    @Layout("GoRun - Login") {
+        <div class="container-login">
+            <div class="container-inicio-login">
+                <h1>Bienvenido</h1>
+
+                // 2. Agregamos esto para mostrar el error si existe
+                if errorMessage != "" {
+                    <div style="color: red; margin-bottom: 10px;">
+                        { errorMessage }
+                    </div>
+                }
+
+                @RegisterForm()
+            </div>
+
+            <div class="container-img-login">
+            </div>
+        </div>
+    }
+}

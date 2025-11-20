@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"database/sql" // <--- AGREGADO: Necesario para sql.NullString
+	"fmt"
 	"net/http"
 	"strconv"
 	"time"
@@ -34,26 +35,26 @@ func (s *Server) DeleteEntrenamiento(w http.ResponseWriter, r *http.Request) {
 }
 
 // GET /entrenamientos
-func (s *Server) EntrenamientosPage(w http.ResponseWriter, r *http.Request) {
+func (s *Server) EntrenamientosPage(w http.ResponseWriter, r *http.Request, id int) {
 	// Por simplicidad uso usuario_id = 1. En producción sacalo de la sesión.
-	entrenamientos, err := s.Queries.GetEntrenamientos(r.Context())
+	entrenamientos, err := s.Queries.GetEntrenamientosByUsuario(r.Context(), int32(id))
 	if err != nil {
 		http.Error(w, "Error leyendo entrenamientos", http.StatusInternalServerError)
 		return
 	}
 
-	views.EntrenamientosPage(entrenamientos).Render(r.Context(), w)
+	views.EntrenamientosPage(entrenamientos, id).Render(r.Context(), w)
 }
 
 // POST /entrenamientos (PRG)
-func (s *Server) CreateEntrenamiento(w http.ResponseWriter, r *http.Request) {
+func (s *Server) CreateEntrenamiento(w http.ResponseWriter, r *http.Request, id int) {
 	if err := r.ParseForm(); err != nil {
 		http.Error(w, "Error leyendo formulario", http.StatusBadRequest)
 		return
 	}
 
 	// si tu formulario incluyera usuario_id, parsealo; por ahora usamos 1
-	usuarioID := int32(1)
+	usuarioID := int32(id)
 
 	fechaStr := r.FormValue("fecha")
 	tipo := r.FormValue("tipo")
@@ -98,7 +99,7 @@ func (s *Server) CreateEntrenamiento(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Error creando entrenamiento: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
-
+	url := fmt.Sprintf("/entrenamientos/%d", id)
 	// PRG: redirigir a la lista
-	http.Redirect(w, r, "/entrenamientos", http.StatusSeeOther)
+	http.Redirect(w, r, url, http.StatusSeeOther)
 }
