@@ -1,8 +1,8 @@
 package views
 import "fmt"
-templ EntrenamientosForm(id int) {
-{{actionURL := fmt.Sprintf("/entrenamientos/%d",id)}}
-<form class="form-agregar-entrenamiento" method="POST" action={actionURL}>
+templ EntrenamientosForm(idUsuario int) {
+{{actionURL := fmt.Sprintf("/entrenamientos/%d",idUsuario)}}
+<form class="form-agregar-entrenamiento" hx-post={actionURL} hx-target="#ver-entrenamientos" hx-swap="outerHTML">
     <h2>Crear entrenamiento</h2>
 
     <input type="date" placeholder="Fecha" name="fecha" required>

@@ -3,25 +3,22 @@ package views
 import sqlc "tp3-web/db/sqlc"
 import "fmt"
 
-templ EntrenamientosList(entrenamientos []sqlc.Entrenamiento,id int) {
-<div class="container-ver-entrenamientos">
+templ EntrenamientosList(entrenamientos []sqlc.Entrenamiento,idUsuario int) {
+<div class="container-ver-entrenamientos" id="ver-entrenamientos">
     <h2>Ver entrenamientos</h2>
 
     if len(entrenamientos) == 0 {
         <p class="sin-entrenamientos">No hay entrenamientos cargados todavía.</p>
     } else {
-        <ul class="ul-entrenamientos">
+        <ul class="ul-entrenamientos" >
             for _, e := range entrenamientos {
                 <li class="entrenamiento-item">
                     <h3>{ e.Tipo }</h3>
                     <p>Día: { e.Fecha.Format("2006-01-02") }</p>
                     <p>{ e.Distancia } km en { e.Tiempo } min</p>
                     <p>{ e.Notas.String }</p>
-                    {{id_usuario := fmt.Sprintf("/entrenamientos/delete/%d",id)}}
-                    <form method="POST" action={id_usuario}>
-                        <input type="hidden" name="id" value={ int(e.IDEntrenamiento) } />
-                        <button class="btn-eliminar" type="submit">Borrar</button>
-                    </form>
+                    {{urlELiminar := fmt.Sprintf("/entrenamientos/delete/%d",int(e.IDEntrenamiento))}}
+                    <button class="btn-eliminar" type="submit" hx-delete={urlELiminar} hx-target="closest li" hx-swap="outerHTML" hx-confirm="Estas muy segurito?">Borrar</button>
                 </li>
             }
         </ul>

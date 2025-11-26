@@ -17,10 +17,14 @@ func (s *Server) LoginGet(w http.ResponseWriter, r *http.Request) {
 	views.LoginPage("").Render(r.Context(), w)
 	log.Println("Se mostro la pagina de login")
 }
+
+// GET /register
 func (s *Server) RegisterGet(w http.ResponseWriter, r *http.Request) {
 	views.RegisterPage("").Render(r.Context(), w)
 	log.Println("Se mostro la pagina de register")
 }
+
+// POST /register
 func (s *Server) RegisterPost(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		views.RegisterPage("Error leyendo formulario").Render(r.Context(), w)
@@ -61,12 +65,12 @@ func (s *Server) RegisterPost(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Usuario registrado exitosamente: %s", email)
 
 	// Redirigir al login para que el usuario inicie sesión
-	http.Redirect(w, r, "/login", http.StatusSeeOther)
+	//http.Redirect(w, r, "/login", http.StatusSeeOther)
+	w.Header().Set("HX-Redirect", "/login")
+	w.WriteHeader(http.StatusOK)
 }
 
 // POST /login
-// Este login es básico: busca por email y compara contraseña literal (NO recomendado para producción).
-// Recomendación: guardar hashes bcrypt y comparar con bcrypt.CompareHashAndPassword.
 func (s *Server) LoginPost(w http.ResponseWriter, r *http.Request) {
 	log.Println("entro a login")
 	if err := r.ParseForm(); err != nil {
@@ -99,5 +103,7 @@ func (s *Server) LoginPost(w http.ResponseWriter, r *http.Request) {
 	}
 	url := fmt.Sprintf("/entrenamientos/%d", user.IDUsuario)
 	// TODO: crear sesión/cookie segura. Por ahora redirigir a entrenamientos
-	http.Redirect(w, r, url, http.StatusSeeOther)
+	// http.Redirect(w, r, url, http.StatusSeeOther)
+	w.Header().Set("HX-Redirect", url)
+	w.WriteHeader(http.StatusOK)
 }

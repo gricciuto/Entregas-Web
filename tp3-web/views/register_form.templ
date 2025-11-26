@@ -1,7 +1,8 @@
 package views
 
 templ RegisterForm() {
-    <form class="container-form-login" method="POST" action="/register">
+    //<form class="container-form-login" method="POST" action="/register">
+    <form class="container-form-login" hx-post="/register" hx-target="body" hx-swap="innerHTML">
         <h3>Crear Nueva Cuenta</h3>
         <div class="container-input-label">
             <label>Usuario</label>

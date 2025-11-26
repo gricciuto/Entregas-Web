@@ -2,7 +2,8 @@ package views
 
 templ LoginForm() {
 
-    <form class="container-form-login" method="POST" action="/login">
+    //<form class="container-form-login" method="POST" action="/login">
+    <form class="container-form-login" hx-post="/login" hx-target="body" hx-swap="innerHTML">
         <div class="container-input-label">
             <label>Email</label>
             <input type="email" name="email" id="email" placeholder="Ingrese su email" required/>

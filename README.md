@@ -1,4 +1,4 @@
-# Entrega TP5.
+# Entrega TP6.
 ## Para ir a la carpeta donde esta el proyecto
     cd tp3-web
 Luego los siguientes comandos
@@ -11,7 +11,7 @@ Se ingresa con email y contrasena, si no esta registrado se puede registrar.
 
 Al ingresar se redirige a la pagina de entrenamientos, que permite agregar y borrar entrenamientos.
 
-Se puede cerrar la sesion pulsando el boton de la barra lateral que dice "Cerrar sesion", El manejo de sesiones y seguridad de la pagina sabemos que no es el correcto, esto sera implementado en la proxima entrega
+Se puede cerrar la sesion pulsando el boton de la barra lateral que dice "Cerrar sesion" (lo unico que hace es redirigir a localhost:8080/login)
 
 
 ------------------
@@ -52,5 +52,8 @@ En el archivo /logs/server.log se encuentran los logs de la ejecucion del servid
 ### Views
 Contiene los archivos templ. Cada uno contiene una funcion especifica con un trozo de html
 Por ejemplo en layout se tiene la estructura base del **html** y dos paginas *login page y entrenamiento page*.
+
+Ahora en vez de enviar con **method="POST"** y **action="url"** lo que hicimos fue integrar htmx en la vista de login que sigue redirigiendo a la url de entrenamientos, pero si haces algun cambio en la lista de entrenamientos _(Ya sea borrar o agregar)_ esto se hace de manera dinamica sin recargar toda la pagina y sin usar javascript
+Usamos hx-target y hx-swap para indicar que parte de la pagina especifica queremos actualizar.
 
 Siguen estando en la carpeta static los archivos css que utilizan los templ y la imagen para el login.

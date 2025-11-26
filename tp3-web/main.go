@@ -75,28 +75,28 @@ func main() {
 	})
 	http.HandleFunc("/entrenamientos/delete/{id}", func(w http.ResponseWriter, r *http.Request) {
 		id := r.PathValue("id")
-		num_id, err := strconv.Atoi(id)
+		idEntrenamiento, err := strconv.Atoi(id)
 		if err != nil {
 			log.Println("Error obteniendo el id")
 		}
 		switch r.Method {
-		case http.MethodPost:
-			server.DeleteEntrenamiento(w, r, num_id)
+		case http.MethodDelete:
+			server.DeleteEntrenamiento(w, r, idEntrenamiento)
 		default:
 			http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
 		}
 	})
 	http.HandleFunc("/entrenamientos/{id}", func(w http.ResponseWriter, r *http.Request) {
 		id := r.PathValue("id")
-		num_id, err := strconv.Atoi(id)
+		idUsuario, err := strconv.Atoi(id)
 		if err != nil {
 			log.Printf("Error parsing: %v", err)
 		}
 		switch r.Method {
 		case http.MethodGet:
-			server.EntrenamientosPage(w, r, num_id)
+			server.EntrenamientosPage(w, r, idUsuario)
 		case http.MethodPost:
-			server.CreateEntrenamiento(w, r, num_id)
+			server.CreateEntrenamiento(w, r, idUsuario)
 		default:
 			http.Error(w, "Método no permitido", http.StatusMethodNotAllowed)
 		}
